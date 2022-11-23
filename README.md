@@ -1,7 +1,14 @@
-## Ibis
-### About
-Ibis is a platform for quantitative investing.
+# Ibis: Know better.
 
-### Data Sources
-See data-sources spreadsheet for more information.
-* All point-in-time[The unrevised data series as would have been available at the time of release.] data series from FRED (link)
+## Ibis is a high-level library for textual analysis. Ibis turns text (and eventually audio) into insights.
+
+## Features
+* ngram analysis
+* topic modeling
+* document classification
+* Named entity recognition
+* Entity linking
+* Readability analysis
+* Document similarity metrics
+* Time-series indexing
+* Advanced visualization tools
