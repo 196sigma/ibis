@@ -1,1 +1,6 @@
+*.pdf
+*.Rproj
+library/**
+FED-api-key
+keys/**
 data/**
