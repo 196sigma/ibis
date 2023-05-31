@@ -1,6 +1,6 @@
 ## Ibis
 ### About
-Ibis is a platform for quantitative investing.
+Ibis is a suite of tools and models for forecasting and sequential decision-making.
 
 ### Data Sources
 See data-sources spreadsheet for more information.
