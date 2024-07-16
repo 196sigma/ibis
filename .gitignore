@@ -7,4 +7,16 @@ library/**
 FED-api-key
 keys/**
 data/**
+notebooks/tmp/**
+notebooks/temp/**
+notebooks/ipynb_checkpoints/**
+notebooks/__pycache__/**
+research/**
+library/**
+research-notebook.adoc
+Notes.md
+logs-*
+notebooks/**
+Untitled*
 .Rproj.user
+.Rhistory
