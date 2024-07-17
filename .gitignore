@@ -1,3 +1,4 @@
+.vscode/
 *.ipynb_checkpoints
 *.csv
 *.zip
@@ -20,3 +21,8 @@ notebooks/**
 Untitled*
 .Rproj.user
 .Rhistory
+configs-data.py
+mobile-notes.md
+Notes-cleaned.md
+reformat-markdown.ipynb
+toc.md
