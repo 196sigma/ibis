@@ -1,0 +1,45 @@
+﻿From Gemini, 02/08/2024
+Here's a potential database schema for stock prices at various bars and adjustment types:
+Tables:
+1. Securities:
+   * id (INT PRIMARY KEY): Unique identifier for the security
+   * ticker (VARCHAR(10) UNIQUE): Stock ticker symbol
+   * name (VARCHAR(255)): Name of the company
+   * exchange (VARCHAR(50)): Stock exchange the security is traded on
+   * currency (VARCHAR(10)): Currency the prices are denominated in
+2. PriceBars:
+   * id (INT PRIMARY KEY): Unique identifier for the price bar
+   * security_id (INT FOREIGN KEY REFERENCES Securities(id)): Foreign key to the security
+   * bar_size (INT): Size of the bar in minutes (e.g., 1, 5, 15, 60)
+   * start_time (DATETIME): Start time of the bar
+   * open (DECIMAL(10,2)): Opening price
+   * high (DECIMAL(10,2)): Highest price within the bar
+   * low (DECIMAL(10,2)): Lowest price within the bar
+   * close (DECIMAL(10,2)): Closing price
+   * volume (BIGINT): Trading volume within the bar
+3. Adjustments:
+   * id (INT PRIMARY KEY): Unique identifier for the adjustment
+   * security_id (INT FOREIGN KEY REFERENCES Securities(id)): Foreign key to the security
+   * adjustment_date (DATE): Date the adjustment took place
+   * type (VARCHAR(50)): Type of adjustment (e.g., split, dividend)
+   * factor (DECIMAL(10,4)): Adjustment factor (e.g., 2:1 split would have a factor of 0.5)
+4. AdjustedPrices:
+   * id (INT PRIMARY KEY): Unique identifier for the adjusted price
+   * price_bar_id (INT FOREIGN KEY REFERENCES PriceBars(id)): Foreign key to the price bar
+   * adjustment_id (INT FOREIGN KEY REFERENCES Adjustments(id)): Foreign key to the adjustment
+   * open (DECIMAL(10,2)): Adjusted opening price
+   * high (DECIMAL(10,2)): Adjusted highest price
+   * low (DECIMAL(10,2)): Adjusted lowest price
+   * close (DECIMAL(10,2)): Adjusted closing price
+   * volume (BIGINT): Adjusted trading volume
+Relationships:
+* One security can have many price bars at different granularities.
+* A price bar can have many adjustments applied to it.
+* An adjustment applies to multiple price bars across different granularities.
+* One adjusted price is calculated by applying an adjustment to a specific price bar.
+Points to consider:
+* You might want to add additional columns to the Securities table depending on your needs (e.g., sector, industry).
+* You can store price data with higher precision if needed (e.g., for tick-by-tick data).
+* You can add indexes to optimize queries based on your expected usage patterns.
+* This schema assumes bar data is stored separately from adjustments. It's possible to combine them depending on your specific needs and storage limitations.
+This is a basic schema that can be adapted to your specific requirements. Be sure to consider your storage needs, query patterns, and future scalability when designing your final schema.
