@@ -107,3 +107,18 @@ def get_prices(asset_type, adjustment, period, timeframe, ticker_symbol):
     return prices_df
 
 
+def add_trading_hours(df):
+    """
+    Add indicator for trading hours
+    Parameters
+    ----------
+    df: pd.DataFrame
+        Must have index as datetime
+    """
+    trading_start = 930
+    trading_end = 1600
+    df['time'] = df.index.strftime('%H%M').astype(int)
+    df['is_trading_hour'] = (df['time'] >= trading_start) & (df['time'] <= trading_end)
+    return df
+
+

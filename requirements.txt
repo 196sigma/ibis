@@ -6,3 +6,4 @@ numpy
 pyarrow
 jupyter
 tqdm
+statsmodels
