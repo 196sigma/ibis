@@ -1,0 +1,9 @@
+= Multiscale Modeling
+
+*Question:* How to integrate forecasts across different temporal resolutions? We want to do this to take advantage of potential patterns across different scales (e.g. daily vs monthly.)
+We update the fine level data using Jeffrey's rule, which involves adjusting the daily values based on the coarse level information.
+
+* Train models at each resolution -- 1min, 5min, hourly, daily, weekly, monthly, annually. Then ... ?
+    * use the predictions from a coarser resolution as features in the finer resolution models (how?)
+* Is this just STL decomposition? Will simple smoothing work?
+* How does predictability vary across resolutions?
