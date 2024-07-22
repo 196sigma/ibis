@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from configs import EXT_DATA_DIR
+#from configs import EXT_DATA_DIR
 
 # DEPRECATED!
 def _get_prices(asset_type, adjustment, period, timeframe, ticker_symbol):
