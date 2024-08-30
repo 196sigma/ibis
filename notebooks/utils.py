@@ -92,8 +92,28 @@ def get_prices(asset_type, adjustment, period, timeframe, ticker_symbol):
     prices_df['date'] = pd.to_datetime(prices_df['date'])
     print(prices_df.shape)
 
-    # Convert 'date' column to datetime if it's not already
+    # Extract the day as YYYY-MM-DD
+    prices_df['day'] = prices_df['date'].dt.date
+
+    # Extract the time as HH:MM:SS
+    prices_df['time'] = prices_df['date'].dt.time
+
+    # Calculate the time ID (minute of the day from 1 to 1440)
+    prices_df['time_id'] = prices_df['date'].dt.hour * 60 + prices_df['date'].dt.minute + 1
+
+    return prices_df
+
+def format_raw_prices(df):
+    """
+    Format raw prices DataFrame
+    Parameters
+    ----------
+    df: pd.DataFrame
+        Must have index as datetime
+    """
+    prices_df = df.copy()
     prices_df['date'] = pd.to_datetime(prices_df['date'])
+    print(prices_df.shape)
 
     # Extract the day as YYYY-MM-DD
     prices_df['day'] = prices_df['date'].dt.date
