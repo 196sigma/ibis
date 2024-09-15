@@ -7,3 +7,6 @@ pyarrow
 jupyter
 tqdm
 statsmodels
+fredapi
+tabulate
+openai
